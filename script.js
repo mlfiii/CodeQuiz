@@ -65,4 +65,9 @@ var quizOver = false;
 
 function displayCurrentQuestion() {
   console.log("In display current Question");
+  var question = questions[currentQuestion].question;
+  var questionClass = $(document).find("#quizContainer > .question");
+  var choiceList = $(document).find(".quizContainer > .choiceList");
+  var numChoices = questions[currentQuestion].choices.length;
+  $(questionClass).text(question);
 }
