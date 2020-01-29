@@ -2,3 +2,7 @@ h1 {
   font-family: "Oswald", sans-serif;
   text-align: center;
 }
+
+#quizContainer {
+  border: solid 1px black;
+}

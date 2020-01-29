@@ -1,14 +1,23 @@
+//Timer section start
 //Declare variables
-
-var totalSeconds = 10;
+var totalSeconds = 3;
+var secondsLeft = totalSeconds;
 var secondsElapsed = 0;
-var status = "Working";
-var secondsLeft = 10;
 var interval;
-// debugger;
+
+$("#seconds").text(secondsLeft);
 //Start quiz click event
 $("#start-quiz").on("click", function() {
+  //   $("#next-button").show("true");
+  //   $("#quizContainer").show();
+
+  //   $("#quizContainer").attr("hidden", "false");
+
+  //   $("#quizContainer").attr({
+  //     hidden: "false"
+  //   });
   //start timer and quiz
+  displayCurrentQuestion();
   startTimer();
 });
 
@@ -43,5 +52,17 @@ function stopTimer() {
 }
 
 function setTime() {
+  //reset the interval to the original
   clearInterval(interval);
+}
+
+//Timer section end
+//Quiz section start
+
+var currentQuestion = 0;
+var correctAnswers = 0;
+var quizOver = false;
+
+function displayCurrentQuestion() {
+  console.log("In display current Question");
 }
