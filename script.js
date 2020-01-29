@@ -1,6 +1,6 @@
 //Timer section start
 //Declare variables
-var totalSeconds = 3;
+var totalSeconds = 100;
 var secondsLeft = totalSeconds;
 var secondsElapsed = 0;
 var interval;
@@ -67,7 +67,59 @@ function displayCurrentQuestion() {
   console.log("In display current Question");
   var question = questions[currentQuestion].question;
   var questionClass = $(document).find("#quizContainer > .question");
-  var choiceList = $(document).find(".quizContainer > .choiceList");
+  var choiceList = $(document).find("#quizContainer > .choiceList");
   var numChoices = questions[currentQuestion].choices.length;
   $(questionClass).text(question);
+
+  // Remove all current <li> elements (if any)
+  $(choiceList)
+    .find("li")
+    .remove();
+
+  var choice;
+  for (i = 0; i < numChoices; i++) {
+    choice = questions[currentQuestion].choices[i];
+    $(
+      '<li><input type="radio" value=' +
+        i +
+        ' name="dynradio" />' +
+        choice +
+        "</li>"
+    ).appendTo(choiceList);
+  }
+}
+
+$("#next-button").on("click", function() {
+  console.log($("input[type='radio']:checked").val());
+
+  var selectedOption = parseInt($("input[type='radio']:checked").val());
+  var correctOption = questions[currentQuestion].correctAnswer;
+  //   debugger;
+  if (selectedOption === correctOption) {
+    correctAnswers++;
+    secondsElapsed -= 15;
+    console.log("got here correct# ", correctAnswers);
+  } else {
+    secondsElapsed += 15;
+    console.log("not correct");
+  }
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    displayCurrentQuestion();
+  } else {
+    displayScore();
+
+    quizOver = true;
+  }
+  console.log("current question", currentQuestion);
+});
+
+function displayScore() {
+  $(document)
+    .find("#quizContainer > .result")
+    .text("You scored: " + correctAnswers + " out of: " + questions.length);
+  $(document)
+    .find("#quizContainer > .result")
+    .show();
+  setTime();
 }
