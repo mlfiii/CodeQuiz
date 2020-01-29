@@ -123,3 +123,76 @@ function displayScore() {
     .show();
   setTime();
 }
+
+var initialsInput = document.querySelector("#initials-text");
+var initialsForm = document.querySelector("#initials-form");
+var highScoreList = document.querySelector("#high-score-list");
+var todoCountSpan = document.querySelector("#todo-count");
+
+var highscore = [];
+
+init();
+
+function renderHighScore() {
+  // Clear todoList element and update todoCountSpan
+  highScoreList.innerHTML = "";
+  //   todoCountSpan.textContent = todos.length;
+
+  // Render a new li for each todo
+  for (var i = 0; i < highscore.length; i++) {
+    var todo = highscore[i].initials + ":" + highscore[i].score;
+
+    var li = document.createElement("li");
+    li.textContent = todo;
+    li.setAttribute("data-index", i);
+
+    // var button = document.createElement("button");
+    // button.textContent = "Complete";
+
+    // li.appendChild(button);
+    highScoreList.appendChild(li);
+    // console.log(todo[i].initials);
+  }
+}
+
+function init() {
+  // Get stored todos from localStorage
+  // Parsing the JSON string to an object
+  var storedHighScore = JSON.parse(localStorage.getItem("highscore"));
+
+  // If todos were retrieved from localStorage, update the todos array to it
+  if (storedHighScore !== null) {
+    highscore = storedHighScore;
+  }
+
+  // Render todos to the DOM
+  renderHighScore();
+}
+
+function storeHighScore() {
+  // Stringify and set "todos" key in localStorage to todos array
+  localStorage.setItem("highscore", JSON.stringify(highscore));
+}
+
+initialsForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  var initialsText = {
+    initials: initialsInput.value.trim(),
+    score: correctAnswers
+  };
+
+  // Return from function early if submitted todoText is blank
+  if (initialsText === "") {
+    return;
+  }
+  //   console.log("{initials:" + initialsText + ", score: " + correctAnswers + "}");
+  // Add new todoText to todos array, clear the input
+  highscore.push(initialsText);
+  initialsInput.value = "";
+
+  // Store updated todos in localStorage, re-render the list
+  storeHighScore();
+  renderHighScore();
+});
+console.log(highscore);
