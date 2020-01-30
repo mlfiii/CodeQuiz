@@ -1,89 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- Include bootstrap  -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <!-- Jquery link -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- My style sheet and favicon -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon'/ >
-    <title>Code Quiz</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-          <div id="view-scores-text">View High Scores</div>  <br>
-        <div id="high-scores" class="col-md-6 text-center text-md-left" >
-          
-          <ul id="high-score-list" ></ul>
-          <form id="initials-form" method="POST">
-                <label for="initials-text" hidden="true">Enter your initials:</label>
-                <input type="text" placeholder="Initials" name="initials-text" id="initials-text"/>
-              </form>
-        </div>
-        <div id="time" class="col-md-6 text-center text-md-right">
-          Timer:
-          <div id="seconds"></div>
-          <!-- <div id="seconds" hidden="true">00</div> -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- Include bootstrap  -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <!-- Jquery link -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- My style sheet and favicon -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  <link rel='icon' href='assets/images/favicon.ico' type='image/x-icon' />
+  <title>Code Quiz</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-2 text-center text-md-left">
+        <div id="view-scores-text">View High Scores</div>
+        <div id="high-scores" class="row">
+
+          <ul id="high-score-list"></ul>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12  text-center">
-          Coding Quiz Challenge<br />
+      <div class="col-md-8">
+        <div class="row">
+          <form id="initials-form" method="POST">
+            <label for="initials-text">Enter your initials:</label>
+            <input type="text" placeholder="Initials" name="initials-text" id="initials-text" />
+          </form>
+
+        </div>
+        <div class="row"> Coding Quiz Challenge<br />
           As a coding bootcamp student, test your skills by taking a timed quiz
           on JavaScript fundamentals.<br />
           <button class="btn btn-primary" id="start-quiz">
             Start Quiz
           </button>
           <button class="btn btn-primary" id="start-again" hidden="true">
-                Start Quiz Over
-              </button>
-        </div>
-      </div>
+            Start Quiz Over
+          </button>
+          <div id="quizContainer" class="col-md-12 text-center">
+            <div class="question text-md-left"></div>
+            <ul class="choiceList text-left" style="list-style-type:none;"></ul>
+            <div class="quizMessage"></div>
+            <div class="result"></div>
 
-      <div class="row">
-        <div id="quizContainer" class="col-md-12 text-center">
-          <div class="question text-md-left"></div>
-          <ul class="choiceList text-left" style="list-style-type:none;"></ul>
-          <div class="quizMessage"></div>
-          <div class="result"></div>
-          
             <button class="btn btn-primary next-button" id="next-button">
               Next Question
             </button>
           </div>
-          <br />
         </div>
       </div>
+
+
+
+
+
+
+
+      <div id="time" class="col-md-2 text-center text-md-right">
+        Timer:
+        <div id="seconds"></div>
+        <!-- <div id="seconds" hidden="true">00</div> -->
+      </div>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Javascript file -->
-    <script type="text/javascript" src="questions.js"></script>
-    <script type="text/javascript" src="script.js"></script>
-  </body>
+    <div class="row">
+      <div class="col-md-12  text-center">
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <br />
+    </div>
+  </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <!-- Javascript file -->
+  <script type="text/javascript" src="questions.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
 </html>

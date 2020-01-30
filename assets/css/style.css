@@ -10,3 +10,7 @@ h1 {
 /* #high-score-list {
   display: none;
 } */
+
+#high-scores-list {
+  border: solid black 1px;
+}

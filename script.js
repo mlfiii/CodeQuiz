@@ -12,7 +12,7 @@ var highScoreArea = document.querySelector("#high-scores");
 var nextButton = document.querySelector("#next-button");
 var startQuizButton = document.querySelector("#start-quiz");
 var startAgainButton = document.querySelector("#start-again");
-var viewHighSchores = false;
+var viewHighScores = false;
 
 var highscore = [];
 //Hide some of the objects on the web page
@@ -21,29 +21,28 @@ debugger;
 nextButton.setAttribute("hidden", "true");
 $("#seconds").text(secondsLeft);
 
-$("#view-scores-text").on("click", function() {
-  if (viewHighSchores === false) {
-    highScoreArea.removeAttribute("hidden");
-    viewHighSchores = true;
-  } else if (viewHighSchores === true) {
-    highScoreArea.setAttribute("hidden", "false");
-    viewHighSchores = false;
-  }
+$("#view-scores-text").on("click", function () {
+  //If the scores are not currently visible, show them.
 
-  debugger;
-  //   highScoreArea.removeAttribute("hidden");
-  //   highScoreList.removeAttribute("hidden");
+  if (viewHighScores === false) {
+    highScoreArea.removeAttribute("hidden");
+    viewHighScores = true;
+    //If the scores are currently visible, hide them.
+  } else if (viewHighScores === true) {
+    highScoreArea.setAttribute("hidden", "false");
+    viewHighScores = false;
+  }
 });
 
 //Start quiz click event
-$("#start-quiz").on("click", function() {
+$("#start-quiz").on("click", function () {
   displayCurrentQuestion();
   startTimer();
   nextButton.removeAttribute("hidden");
   startQuizButton.setAttribute("hidden", "true");
 });
 
-$("#start-again").on("click", function() {
+$("#start-again").on("click", function () {
   totalSeconds = 100;
   secondsLeft = totalSeconds;
   secondsElapsed = 0;
@@ -55,7 +54,7 @@ $("#start-again").on("click", function() {
 });
 function startTimer() {
   // Set the inerval
-  interval = setInterval(function() {
+  interval = setInterval(function () {
     secondsElapsed++;
     renderTime();
   }, 1000);
@@ -113,15 +112,15 @@ function displayCurrentQuestion() {
     choice = questions[currentQuestion].choices[i];
     $(
       '<li><input type="radio" value=' +
-        i +
-        ' name="dynradio" />' +
-        choice +
-        "</li>"
+      i +
+      ' name="dynradio" />' +
+      choice +
+      "</li>"
     ).appendTo(choiceList);
   }
 }
 
-$("#next-button").on("click", function() {
+$("#next-button").on("click", function () {
   console.log($("input[type='radio']:checked").val());
 
   var selectedOption = parseInt($("input[type='radio']:checked").val());
@@ -210,7 +209,7 @@ function storeHighScore() {
   localStorage.setItem("highscore", JSON.stringify(highscore));
 }
 
-initialsForm.addEventListener("submit", function(event) {
+initialsForm.addEventListener("submit", function (event) {
   event.preventDefault();
   if (quizOver === false) {
     alert("Please start and finish the quiz first!");
@@ -221,7 +220,7 @@ initialsForm.addEventListener("submit", function(event) {
 
   highScoreList.removeAttribute("hidden");
 
-  initialsInput.setAttribute("hidden", "true");
+  // initialsInput.setAttribute("hidden", "true");
   //   correctAnswers = 0;
   var initialsText = {
     initials: initialsInput.value.trim(),
