@@ -21,12 +21,13 @@
   <body>
     <div class="container">
       <div class="row">
-        <div id="high-scores" class="col-md-6 text-center text-md-left">
-          View High Scores<br>
-          <ul id="high-score-list"></ul>
+            View High Scores<br>
+        <div id="high-scores" class="col-md-6 text-center text-md-left" >
+          
+          <ul id="high-score-list" ></ul>
           <form id="initials-form" method="POST">
-                <label for="initials-text">Enter your initials:</label>
-                <input type="text" placeholder="Initials" name="initials-text" id="initials-text" />
+                <label for="initials-text" hidden="true">Enter your initials:</label>
+                <input type="text" placeholder="Initials" name="initials-text" id="initials-text"/>
               </form>
         </div>
         <div id="time" class="col-md-6 text-center text-md-right">
@@ -43,6 +44,9 @@
           <button class="btn btn-primary" id="start-quiz">
             Start Quiz
           </button>
+          <button class="btn btn-primary" id="start-again" hidden="true">
+                Start Quiz Over
+              </button>
         </div>
       </div>
 

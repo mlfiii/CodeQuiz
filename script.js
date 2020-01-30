@@ -4,23 +4,36 @@ var totalSeconds = 100;
 var secondsLeft = totalSeconds;
 var secondsElapsed = 0;
 var interval;
+var initialsInput = document.querySelector("#initials-text");
+var initialsForm = document.querySelector("#initials-form");
+var highScoreList = document.querySelector("#high-score-list");
+var highScoreArea = document.querySelector("#high-scores");
+var nextButton = document.querySelector("#next-button");
+var startQuizButton = document.querySelector("#start-quiz");
+var startAgainButton = document.querySelector("#start-again");
 
+var highscore = [];
+highScoreArea.setAttribute("hidden", "true");
+nextButton.setAttribute("hidden", "true");
 $("#seconds").text(secondsLeft);
 //Start quiz click event
 $("#start-quiz").on("click", function() {
-  //   $("#next-button").show("true");
-  //   $("#quizContainer").show();
-
-  //   $("#quizContainer").attr("hidden", "false");
-
-  //   $("#quizContainer").attr({
-  //     hidden: "false"
-  //   });
-  //start timer and quiz
   displayCurrentQuestion();
   startTimer();
+  nextButton.removeAttribute("hidden");
+  startQuizButton.setAttribute("hidden", "true");
 });
 
+$("#start-again").on("click", function() {
+  totalSeconds = 100;
+  secondsLeft = totalSeconds;
+  secondsElapsed = 0;
+
+  displayCurrentQuestion();
+  startTimer();
+  nextButton.removeAttribute("hidden");
+  startQuizButton.setAttribute("hidden", "true");
+});
 function startTimer() {
   // Set the inerval
   interval = setInterval(function() {
@@ -108,7 +121,8 @@ $("#next-button").on("click", function() {
     displayCurrentQuestion();
   } else {
     displayScore();
-
+    nextButton.setAttribute("hidden", "true");
+    startAgainButton.removeAttribute("hidden");
     quizOver = true;
   }
   console.log("current question", currentQuestion);
@@ -122,14 +136,8 @@ function displayScore() {
     .find("#quizContainer > .result")
     .show();
   setTime();
+  highScoreArea.removeAttribute("hidden");
 }
-
-var initialsInput = document.querySelector("#initials-text");
-var initialsForm = document.querySelector("#initials-form");
-var highScoreList = document.querySelector("#high-score-list");
-var todoCountSpan = document.querySelector("#todo-count");
-
-var highscore = [];
 
 init();
 
@@ -137,10 +145,19 @@ function renderHighScore() {
   // Clear todoList element and update todoCountSpan
   highScoreList.innerHTML = "";
   //   todoCountSpan.textContent = todos.length;
-
+  //   data.Addresses.sort(function(a, b) {
+  //     return a.address.localeCompare(b.address);
+  // });
+  //   debugger;
+  highScoreList.removeAttribute("hidden");
+  //   initialsForm.removeAttribute("hidden");
   // Render a new li for each todo
   for (var i = 0; i < highscore.length; i++) {
     var todo = highscore[i].initials + ":" + highscore[i].score;
+
+    // allPlayers.sort(function(a, b){
+    //     return b.score - a.score
+    //   });
 
     var li = document.createElement("li");
     li.textContent = todo;
@@ -176,7 +193,17 @@ function storeHighScore() {
 
 initialsForm.addEventListener("submit", function(event) {
   event.preventDefault();
+  if (quizOver === false) {
+    alert("Please start and finish the quiz first!");
+    return;
+  }
+  //   debugger;
+  //   highScoreList.setAttribute("hidden", "true");
 
+  highScoreList.removeAttribute("hidden");
+
+  initialsInput.setAttribute("hidden", "true");
+  //   correctAnswers = 0;
   var initialsText = {
     initials: initialsInput.value.trim(),
     score: correctAnswers
@@ -191,8 +218,8 @@ initialsForm.addEventListener("submit", function(event) {
   highscore.push(initialsText);
   initialsInput.value = "";
 
+  highscore.hidden = "";
   // Store updated todos in localStorage, re-render the list
   storeHighScore();
   renderHighScore();
 });
-console.log(highscore);
