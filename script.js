@@ -12,6 +12,7 @@ var highScoreArea = document.querySelector("#high-scores");
 var nextButton = document.querySelector("#next-button");
 var startQuizButton = document.querySelector("#start-quiz");
 var startAgainButton = document.querySelector("#start-again");
+var viewHighSchores = false;
 
 var highscore = [];
 //Hide some of the objects on the web page
@@ -21,15 +22,14 @@ nextButton.setAttribute("hidden", "true");
 $("#seconds").text(secondsLeft);
 
 $("#view-scores-text").on("click", function() {
-  //   debugger;
-  console.log("score list:", highscore.length);
-
-  if (highscore.length <= 0) {
-    alert("HEllo");
+  if (viewHighSchores === false) {
+    highScoreArea.removeAttribute("hidden");
+    viewHighSchores = true;
+  } else if (viewHighSchores === true) {
+    highScoreArea.setAttribute("hidden", "false");
+    viewHighSchores = false;
   }
 
-  debugger;
-  highScoreArea.setAttribute("hidden", "false");
   debugger;
   //   highScoreArea.removeAttribute("hidden");
   //   highScoreList.removeAttribute("hidden");
