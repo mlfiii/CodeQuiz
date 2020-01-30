@@ -25,13 +25,24 @@ var questions = [
     correctAnswer: 0
   },
   {
-    question: "Question 4?",
-    choices: ["Nile", "Amazon", "Mississippi", "Yangtze"],
-    correctAnswer: 0
+    question:
+      "These 3 languages are considered the foundational languages of the web development.",
+    choices: [
+      "English, Spanish and French",
+      "HTML, CSS and JavaScript",
+      "See, Plus Plus and ASP",
+      "Dunning, Latin and Togo"
+    ],
+    correctAnswer: 1
   },
   {
-    question: "Question 5?",
-    choices: ["Waterloo", "Baker Street", "Kings Cross", "Victoria"],
+    question: "What can JavaScript be used for?",
+    choices: [
+      "Access APIs.",
+      "Look into the future.",
+      "Manipulate the trays.",
+      "Clear the room."
+    ],
     correctAnswer: 0
   }
 ];

@@ -4,6 +4,7 @@ var totalSeconds = 100;
 var secondsLeft = totalSeconds;
 var secondsElapsed = 0;
 var interval;
+
 var initialsInput = document.querySelector("#initials-text");
 var initialsForm = document.querySelector("#initials-form");
 var highScoreList = document.querySelector("#high-score-list");
@@ -13,9 +14,27 @@ var startQuizButton = document.querySelector("#start-quiz");
 var startAgainButton = document.querySelector("#start-again");
 
 var highscore = [];
+//Hide some of the objects on the web page
 highScoreArea.setAttribute("hidden", "true");
+debugger;
 nextButton.setAttribute("hidden", "true");
 $("#seconds").text(secondsLeft);
+
+$("#view-scores-text").on("click", function() {
+  //   debugger;
+  console.log("score list:", highscore.length);
+
+  if (highscore.length <= 0) {
+    alert("HEllo");
+  }
+
+  debugger;
+  highScoreArea.setAttribute("hidden", "false");
+  debugger;
+  //   highScoreArea.removeAttribute("hidden");
+  //   highScoreList.removeAttribute("hidden");
+});
+
 //Start quiz click event
 $("#start-quiz").on("click", function() {
   displayCurrentQuestion();
