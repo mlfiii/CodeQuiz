@@ -17,7 +17,7 @@ var viewHighScores = false;
 var highscore = [];
 //Hide some of the objects on the web page
 highScoreArea.setAttribute("hidden", "true");
-debugger;
+
 nextButton.setAttribute("hidden", "true");
 $("#seconds").text(secondsLeft);
 
@@ -202,6 +202,7 @@ function init() {
 
   // Render todos to the DOM
   renderHighScore();
+  viewHighScores = true;
 }
 
 function storeHighScore() {
