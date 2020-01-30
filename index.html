@@ -18,26 +18,32 @@
 
 <body>
   <div class="container">
+    <div class="row text-center">
+      <h2>Coding Quiz Challenge</h2>
+      <br />
+      As a coding bootcamp student, test your skills by taking a timed quiz
+      on JavaScript fundamentals.<br />
+    </div>
     <div class="row">
 
       <div class="col-md-2 text-center text-md-left">
-        <div id="view-scores-text" class="row">View High Scores</div>
-        <div id="high-scores" class="row">
+        <form id="initials-form" method="POST">
+          <label for="initials-text">Enter your initials:</label>
+          <input type="text" placeholder="Initials" name="initials-text" id="initials-text" />
+        </form>
 
-          <ul id="high-score-list"></ul>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <div id="view-scores-text" class="text-center">View High Scores</div>
+              <div id="high-scores">
+
+                <ul id="high-score-list" style="list-style-type:none;"></ul>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-8">
         <div class="row">
-          <form id="initials-form" method="POST">
-            <label for="initials-text">Enter your initials:</label>
-            <input type="text" placeholder="Initials" name="initials-text" id="initials-text" />
-          </form>
-
-        </div>
-        <div class="row"> Coding Quiz Challenge<br />
-          As a coding bootcamp student, test your skills by taking a timed quiz
-          on JavaScript fundamentals.<br />
           <button class="btn btn-primary" id="start-quiz">
             Start Quiz
           </button>
