@@ -64,7 +64,7 @@ p{
 
 }
 
-.result{
+.result, #seconds{
 
   color: red;
 }
