@@ -8,9 +8,8 @@ body {
 /* Set how much of the viewable space is taken by the container
 and ensure that the padding is taken away. */
 #page-container {
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  padding: 0px 0px 0px 0px;
   background-color: #2774ae;
   color: #FFB81C;
 }
@@ -26,10 +25,16 @@ p{
 
 #high-scores-list {
   border: solid black 1px;
+
 }
 
 .btn{
   background-color: #ffd100;
   color: #2774ae;;
 }
+
+#high-scores-area{
+  margin-bottom: 10px;
+}
+
 
