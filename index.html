@@ -17,11 +17,11 @@
 </head>
 
 <body>
-  <div id="page-container" class="container-fluid">
+  <div id="page-container" class="jumbotron">
     <div class="row text-center">
       <div class="col-md-12">
         <h2>Coding Quiz Challenge</h2>
-        <p>As a coding bootcamp student, test your skills by taking a timed quiz
+        <p class="text-left">As a coding bootcamp student, test your skills by taking a timed quiz
           on JavaScript fundamentals.</p>
       </div>
 
@@ -38,10 +38,10 @@
         <form id="initials-form" method="POST">
           <label for="initials-text">Enter your initials:</label>
           <input type="text" placeholder="Initials" name="initials-text" id="initials-text" />
-        </form><button class="btn btn-primary" id="start-quiz">
+        </form><button class="btn" id="start-quiz">
           Start Quiz
         </button>
-        <button class="btn btn-primary" id="start-again" hidden="true">
+        <button class="btn" id="start-again" hidden="true">
           Start Quiz Over
         </button>
         <div id="quizContainer" class="text-center">
@@ -49,7 +49,7 @@
           <ul class="choiceList text-left" style="list-style-type:none;"></ul>
           <div class="quizMessage"></div>
           <div class="result"></div>
-          <button class="btn btn-primary next-button" id="next-button">
+          <button class="btn next-button" id="next-button">
             Next Question
           </button>
 

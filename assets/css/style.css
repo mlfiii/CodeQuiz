@@ -11,6 +11,8 @@ and ensure that the padding is taken away. */
   height: 100vh;
   width: 100%;
   padding: 0px 0px 0px 0px;
+  background-color: #2774ae;
+  color: #FFB81C;
 }
 
 h1,h2,h3 {
@@ -18,15 +20,16 @@ h1,h2,h3 {
   text-align: center;
 }
 
-/* #quizContainer {
-  border: solid 1px black;
-} */
-
-/* #high-score-list {
-  display: none;
-} */
+p{
+  padding: 5px;
+}
 
 #high-scores-list {
   border: solid black 1px;
+}
+
+.btn{
+  background-color: #ffd100;
+  color: #2774ae;;
 }
 

@@ -50,14 +50,20 @@ $("#start-again").on("click", function () {
   totalSeconds = 100;
   secondsLeft = totalSeconds;
   secondsElapsed = 0;
-
+  currentQuestion = 0;
+  correctAnswers = 0;
+  quizOver = false;
+  clearScore();
   displayCurrentQuestion();
   startTimer();
   nextButton.removeAttribute("hidden");
-  startQuizButton.setAttribute("hidden", "true");
+  startAgainButton.setAttribute("hidden", "true");
+
+
 });
 function startTimer() {
   // Set the inerval
+
   interval = setInterval(function () {
     secondsElapsed++;
     renderTime();
@@ -159,6 +165,19 @@ function displayScore() {
     .show();
   setTime();
   highScoreArea.removeAttribute("hidden");
+}
+function clearScore() {
+  $(document)
+    .find("#quizContainer > .result")
+    .text("");
+  $(document)
+    .find("#quizContainer > .result")
+    .hidden;
+  setTime();
+  highScoreArea.setAttribute("hidden", "true");
+  viewHighScores = false;
+
+
 }
 
 init();
