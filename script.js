@@ -36,7 +36,8 @@ $(document).ready(function () {
 
   $("#view-scores-text").on("click", function () {
     //If the scores are not currently visible, show them.
-    debugger;
+
+
     if (viewHighScores === false) {
       highScoreArea.removeAttribute("hidden");
       viewHighScores = true;
@@ -45,7 +46,7 @@ $(document).ready(function () {
       highScoreArea.setAttribute("hidden", "false");
       viewHighScores = false;
     }
-    debugger;
+
   });
 
   //Used to start quiz

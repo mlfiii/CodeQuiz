@@ -1,14 +1,17 @@
 /* Set how much of the viewable space is taken up */
 html,
 body {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   padding: 0px 0px 0px 0px;
+}
+body{
+  background-color: #2774ae;
 }
 /* Set how much of the viewable space is taken by the container
 and ensure that the padding is taken away. */
 #page-container {
-  height: 100%;
+  height: auto;
   width: 100%;
   background-color: #2774ae;
   color: #FFB81C;
