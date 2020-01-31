@@ -13,7 +13,11 @@ and ensure that the padding is taken away. */
   background-color: #2774ae;
   color: #FFB81C;
 }
+#header-area{
 
+  border: 1px solid white;
+  margin-bottom: 10px;
+}
 h1,h2,h3 {
   font-family: "Oswald", sans-serif;
   text-align: center;
