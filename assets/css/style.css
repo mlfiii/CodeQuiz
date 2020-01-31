@@ -21,6 +21,16 @@ and ensure that the padding is taken away. */
   border: 1px solid white;
   margin-bottom: 10px;
 }
+
+hr{
+
+  border: white .5px solid;
+}
+
+#cq-title{
+
+    padding-top: 15px;
+}
 h1,h2,h3 {
   font-family: "Oswald", sans-serif;
   text-align: center;
