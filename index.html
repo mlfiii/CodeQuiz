@@ -17,60 +17,66 @@
 </head>
 
 <body>
-  <div class="container">
+  <div id="page-container" class="container-fluid">
     <div class="row text-center">
-      <h2>Coding Quiz Challenge</h2>
-      <br />
-      As a coding bootcamp student, test your skills by taking a timed quiz
-      on JavaScript fundamentals.<br />
+      <div class="col-md-12">
+        <h2>Coding Quiz Challenge</h2>
+        <p>As a coding bootcamp student, test your skills by taking a timed quiz
+          on JavaScript fundamentals.</p>
+      </div>
+
     </div>
     <div class="row">
+      <div class="col-md-2">
+        <div id="view-scores-text" class="text-center">View High Scores</div>
+        <div id="high-scores">
 
-      <div class="col-md-2 text-center text-md-left">
+          <ul id="high-score-list" style="list-style-type:none;"></ul>
+        </div>
+      </div>
+      <div class="col-md-8">
         <form id="initials-form" method="POST">
           <label for="initials-text">Enter your initials:</label>
           <input type="text" placeholder="Initials" name="initials-text" id="initials-text" />
-        </form>
-
-        <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <div id="view-scores-text" class="text-center">View High Scores</div>
-              <div id="high-scores">
-
-                <ul id="high-score-list" style="list-style-type:none;"></ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <button class="btn btn-primary" id="start-quiz">
-            Start Quiz
+        </form><button class="btn btn-primary" id="start-quiz">
+          Start Quiz
+        </button>
+        <button class="btn btn-primary" id="start-again" hidden="true">
+          Start Quiz Over
+        </button>
+        <div id="quizContainer" class="text-center">
+          <div class="question text-md-left"></div>
+          <ul class="choiceList text-left" style="list-style-type:none;"></ul>
+          <div class="quizMessage"></div>
+          <div class="result"></div>
+          <button class="btn btn-primary next-button" id="next-button">
+            Next Question
           </button>
-          <button class="btn btn-primary" id="start-again" hidden="true">
-            Start Quiz Over
-          </button>
-          <div id="quizContainer" class="col-md-12 text-center">
-            <div class="question text-md-left"></div>
-            <ul class="choiceList text-left" style="list-style-type:none;"></ul>
-            <div class="quizMessage"></div>
-            <div class="result"></div>
-            <button class="btn btn-primary next-button" id="next-button">
-              Next Question
-            </button>
-          </div>
+
         </div>
       </div>
-
-      <div id="time" class="col-md-2 text-center text-md-right">
-        Timer:
-        <div id="seconds"></div>
-        <!-- <div id="seconds" hidden="true">00</div> -->
+      <div class="col-md-2">
+        <div id="time" class="col-md-2 text-center text-md-right">
+          Timer:
+          <div id="seconds"></div>
+          <!-- <div id="seconds" hidden="true">00</div> -->
+        </div>
       </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
   </div>
-  </div>
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

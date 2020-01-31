@@ -36,6 +36,10 @@ $("#view-scores-text").on("click", function () {
 
 //Start quiz click event
 $("#start-quiz").on("click", function () {
+  if (initialsInput.value.trim() === "") {
+    alert("Please enter your initials first!")
+    return;
+  }
   displayCurrentQuestion();
   startTimer();
   nextButton.removeAttribute("hidden");
