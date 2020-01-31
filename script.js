@@ -12,11 +12,14 @@ var highScoreArea = document.querySelector("#high-scores");
 var nextButton = document.querySelector("#next-button");
 var startQuizButton = document.querySelector("#start-quiz");
 var startAgainButton = document.querySelector("#start-again");
+var quizContainer = document.querySelector("#quizContainer");
 var viewHighScores = false;
 
 var highscore = [];
 //Hide some of the objects on the web page
 highScoreArea.setAttribute("hidden", "true");
+quizContainer.setAttribute("hidden", "true")
+
 
 nextButton.setAttribute("hidden", "true");
 $("#seconds").text(secondsLeft);
@@ -40,6 +43,7 @@ $("#start-quiz").on("click", function () {
     alert("Please enter your initials first!")
     return;
   }
+  quizContainer.removeAttribute("hidden")
   displayCurrentQuestion();
   startTimer();
   nextButton.removeAttribute("hidden");
