@@ -1,10 +1,4 @@
-//Timer section start
-//Declare variables
-var totalSeconds = 100;
-var secondsLeft = totalSeconds;
-var secondsElapsed = 0;
-var interval;
-
+//Declare and set variables and objects
 var initialsInput = document.querySelector("#initials-text");
 var initialsForm = document.querySelector("#initials-form");
 var highScoreList = document.querySelector("#high-score-list");
@@ -14,19 +8,24 @@ var startQuizButton = document.querySelector("#start-quiz");
 var startAgainButton = document.querySelector("#start-again");
 var quizContainer = document.querySelector("#quizContainer");
 var viewHighScores = false;
-
+var totalSeconds = 100;
+var secondsLeft = totalSeconds;
+var secondsElapsed = 0;
+var interval;
 var highscore = [];
+
 //Hide some of the objects on the web page
 highScoreArea.setAttribute("hidden", "true");
 quizContainer.setAttribute("hidden", "true")
-
-
 nextButton.setAttribute("hidden", "true");
+
+//Set the viwable items on page.
 $("#seconds").text(secondsLeft);
+
+//Used when the view text is clicked.
 
 $("#view-scores-text").on("click", function () {
   //If the scores are not currently visible, show them.
-
   if (viewHighScores === false) {
     highScoreArea.removeAttribute("hidden");
     viewHighScores = true;
@@ -37,20 +36,34 @@ $("#view-scores-text").on("click", function () {
   }
 });
 
-//Start quiz click event
+//Used to start quiz
 $("#start-quiz").on("click", function () {
   if (initialsInput.value.trim() === "") {
+    //If the query is started but the initials weren't typed in, then stop whole proce3ss and alert.
     alert("Please enter your initials first!")
     return;
   }
+  //Unhide the quiz container so user can see questions
   quizContainer.removeAttribute("hidden")
+
+  //Display the questions.
   displayCurrentQuestion();
+
+  //Start the timer.
   startTimer();
+
+  //Show the next button.
   nextButton.removeAttribute("hidden");
+
+  //Hide the start quiz button.
   startQuizButton.setAttribute("hidden", "true");
+
 });
 
+//Used to start the quiz again after it was taken.
 $("#start-again").on("click", function () {
+
+  //Reset the varioous items needed to start the quiz again.
   totalSeconds = 100;
   secondsLeft = totalSeconds;
   secondsElapsed = 0;
@@ -65,6 +78,8 @@ $("#start-again").on("click", function () {
 
 
 });
+
+//Used to start the timer.
 function startTimer() {
   // Set the inerval
 
@@ -74,6 +89,7 @@ function startTimer() {
   }, 1000);
 }
 
+//Used to format the time and stop it once time has expired.
 function renderTime() {
   //Set the text of the seconds area text
   $("#seconds").text(getFormattedSeconds());
@@ -89,6 +105,7 @@ function getFormattedSeconds() {
   return secondsLeft;
 }
 
+//Used to stop the timer.
 function stopTimer() {
   //Reset the timer once it has reached zero
   secondsElapsed = 0;
@@ -96,6 +113,8 @@ function stopTimer() {
   renderTime();
 }
 
+
+//Used to set the time interval.
 function setTime() {
   //reset the interval to the original
   clearInterval(interval);
