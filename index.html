@@ -40,12 +40,14 @@
         <form id="initials-form" method="POST">
           <label for="initials-text">Enter your initials:</label>
           <input type="text" placeholder="Initials" name="initials-text" id="initials-text" />
-        </form><button class="btn" id="start-quiz">
-          Start Quiz
-        </button>
-        <button class="btn" id="start-again" hidden="true">
-          Start Quiz Over
-        </button>
+        </form>
+        <div id="start-quiz-button-area"><button class="btn" id="start-quiz">
+            Start Quiz
+          </button><button class="btn" id="start-again" hidden="true">
+            Start Quiz Over
+          </button></div>
+
+
         <div id="quizContainer" class="text-center">
           <div class="question text-md-left"></div>
           <ul class="choiceList text-left" style="list-style-type:none;"></ul>

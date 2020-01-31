@@ -45,4 +45,20 @@ p{
   margin-bottom: 10px;
 }
 
+#start-quiz-button-area{
 
+  margin-top: 10px;
+
+}
+
+#quizContainer{
+
+  border: 1px solid white;
+  padding: 10px;
+}
+
+.question{
+
+  border-bottom: white 1px solid;
+
+}
