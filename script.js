@@ -9,7 +9,7 @@ $(document).ready(function () {
   var startAgainButton = document.querySelector("#start-again");
   var quizContainer = document.querySelector("#quizContainer");
   var viewHighScores = false;
-  var totalSeconds = 3;
+  var totalSeconds = 60;
   var secondsLeft = totalSeconds;
   var secondsElapsed = 0;
   var interval;
@@ -244,6 +244,7 @@ $(document).ready(function () {
     setTime();
     highScoreArea.removeAttribute("hidden");
   }
+
 
   //Used to clear the score.
   function clearScore() {
