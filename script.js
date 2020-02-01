@@ -9,7 +9,7 @@ $(document).ready(function () {
   var startAgainButton = document.querySelector("#start-again");
   var quizContainer = document.querySelector("#quizContainer");
   var viewHighScores = false;
-  var totalSeconds = 100;
+  var totalSeconds = 60;
   var secondsLeft = totalSeconds;
   var secondsElapsed = 0;
   var interval;
@@ -19,7 +19,7 @@ $(document).ready(function () {
   var quizOver = false;
 
 
-  debugger;
+
   //Hide some of the objects on the web page
   highScoreArea.setAttribute("hidden", "true");
   quizContainer.setAttribute("hidden", "true")
@@ -56,6 +56,7 @@ $(document).ready(function () {
       alert("Please enter your initials first!")
       return;
     }
+
     //Unhide the quiz container so user can see questions
     quizContainer.removeAttribute("hidden")
 
@@ -77,7 +78,7 @@ $(document).ready(function () {
   $("#start-again").on("click", function () {
 
     //Reset the varioous items needed to start the quiz again.
-    totalSeconds = 100;
+    totalSeconds = 60;
     secondsLeft = totalSeconds;
     secondsElapsed = 0;
     currentQuestion = 0;
@@ -85,6 +86,7 @@ $(document).ready(function () {
     quizOver = false;
     clearScore();
     displayCurrentQuestion();
+    renderTime();
     startTimer();
     nextButton.removeAttribute("hidden");
     startAgainButton.setAttribute("hidden", "true");
@@ -105,9 +107,13 @@ $(document).ready(function () {
   //Used to format the time and stop it once time has expired.
   function renderTime() {
     //Set the text of the seconds area text
+    // if (quizOver === false&) {
     $("#seconds").text(getFormattedSeconds());
+    // }
+
     //If the time has run out, then stop the countdown
     if (secondsElapsed >= totalSeconds) {
+
       stopTimer();
     }
   }
@@ -123,7 +129,7 @@ $(document).ready(function () {
     //Reset the timer once it has reached zero
     secondsElapsed = 0;
     setTime();
-    renderTime();
+
   }
 
 
@@ -170,7 +176,7 @@ $(document).ready(function () {
 
     var selectedOption = parseInt($("input[type='radio']:checked").val());
     var correctOption = questions[currentQuestion].correctAnswer;
-    //   debugger;
+
     if (selectedOption === correctOption) {
       correctAnswers++;
       secondsElapsed -= 15;
