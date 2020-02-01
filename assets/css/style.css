@@ -27,6 +27,7 @@ hr{
   border: white .5px solid;
 }
 
+
 #cq-title{
 
     padding-top: 15px;
@@ -51,7 +52,8 @@ p{
 
 .btn{
   background-color: #ffd100;
-  color: #2774ae;;
+  color: #2774ae;
+  margin: 3px;
 }
 
 #high-scores-area{
@@ -85,4 +87,9 @@ p{
 #time{
 
   margin-top: 10px;
+}
+
+input{
+
+  margin: 3px;
 }

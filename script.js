@@ -49,6 +49,13 @@ $(document).ready(function () {
 
   });
 
+  $("#save-score").on("click", function () {
+    //Save the scores
+
+    saveScore();
+
+
+  });
   //Used to start quiz
   $("#start-quiz").on("click", function () {
     if (initialsInput.value.trim() === "") {
@@ -115,9 +122,9 @@ $(document).ready(function () {
     if (secondsElapsed >= totalSeconds) {
 
       stopTimer();
-      debugger;
+
       getCorrectAnswer();
-      debugger;
+
       displayScore();
       nextButton.setAttribute("hidden", "true");
       startAgainButton.removeAttribute("hidden");
@@ -306,8 +313,16 @@ $(document).ready(function () {
     localStorage.setItem("highscore", JSON.stringify(highscore));
   }
 
-  initialsForm.addEventListener("submit", function (event) {
+
+  function saveScore() {
+
     event.preventDefault();
+
+    if (initialsInput.value.trim() === "") {
+      //If the query is started but the initials weren't typed in, then stop whole proce3ss and alert.
+      alert("Please enter your initials first!")
+      return;
+    }
     if (quizOver === false) {
       alert("Please start and finish the quiz first!");
       return;
@@ -334,6 +349,42 @@ $(document).ready(function () {
     // Store updated initials in localStorage, re-render the list
     storeHighScore();
     renderHighScore();
+
+  }
+
+
+
+  initialsForm.addEventListener("submit", function (event) {
+
+
+    saveScore();
+    // event.preventDefault();
+    // if (quizOver === false) {
+    //   alert("Please start and finish the quiz first!");
+    //   return;
+    // }
+
+
+
+    // highScoreList.removeAttribute("hidden");
+
+    // var initialsText = {
+    //   initials: initialsInput.value.trim(),
+    //   score: correctAnswers
+    // };
+
+    // // Return from function early if submitted initials is blank
+    // if (initialsText === "") {
+    //   return;
+    // }
+
+    // // Add new highscore to initials array, clear the input
+    // highscore.push(initialsText);
+    // initialsInput.value = "";
+    // highscore.hidden = "";
+    // // Store updated initials in localStorage, re-render the list
+    // storeHighScore();
+    // renderHighScore();
   });
 
-})
+});

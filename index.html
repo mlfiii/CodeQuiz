@@ -40,10 +40,27 @@
         </div>
       </div>
       <div class="col-md-8 text-center">
-        <form id="initials-form" method="POST">
-          <label for="initials-text">Enter your initials:</label>
-          <input type="text" placeholder="Initials" name="initials-text" id="initials-text" />
-        </form>
+
+        <table id="initials-table">
+          <td>
+            <tr>
+              <form id="initials-form" method="POST">
+                <label for="initials-text">Enter your initials:</label>
+                <input type="text" placeholder="Initials" name="initials-text" id="initials-text" />
+              </form>
+            </tr>
+
+          </td>
+          <td>
+
+            <tr>
+              <button class="btn save-button" id="save-score">
+                Save Score
+              </button>
+            </tr>
+          </td>
+        </table>
+
         <div id="start-quiz-button-area"><button class="btn" id="start-quiz">
             Start Quiz
           </button><button class="btn" id="start-again" hidden="true">
