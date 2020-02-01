@@ -9,7 +9,7 @@ $(document).ready(function () {
   var startAgainButton = document.querySelector("#start-again");
   var quizContainer = document.querySelector("#quizContainer");
   var viewHighScores = false;
-  var totalSeconds = 60;
+  var totalSeconds = 3;
   var secondsLeft = totalSeconds;
   var secondsElapsed = 0;
   var interval;
@@ -115,6 +115,13 @@ $(document).ready(function () {
     if (secondsElapsed >= totalSeconds) {
 
       stopTimer();
+      debugger;
+      getCorrectAnswer();
+      debugger;
+      displayScore();
+      nextButton.setAttribute("hidden", "true");
+      startAgainButton.removeAttribute("hidden");
+
     }
   }
 
@@ -168,6 +175,32 @@ $(document).ready(function () {
         "</li>"
       ).appendTo(choiceList);
     }
+  }
+
+
+  function getCorrectAnswer() {
+    var selectedOption = parseInt($("input[type='radio']:checked").val());
+    var correctOption = questions[currentQuestion].correctAnswer;
+
+    if (selectedOption === correctOption) {
+      correctAnswers++;
+      secondsElapsed -= 15;
+      console.log("got here correct# ", correctAnswers);
+    } else {
+      secondsElapsed += 15;
+      console.log("not correct");
+    }
+    // currentQuestion++;
+    // if (currentQuestion < questions.length) {
+    //   displayCurrentQuestion();
+    // } else {
+    displayScore();
+    nextButton.setAttribute("hidden", "true");
+    startAgainButton.removeAttribute("hidden");
+    quizOver = true;
+    // }
+    console.log("current question", currentQuestion);
+
   }
 
   //Used to go to the next question.
