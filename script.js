@@ -17,6 +17,7 @@ $(document).ready(function () {
   var currentQuestion = 0;
   var correctAnswers = 0;
   var quizOver = false;
+  var scoreFactor;
 
 
 
@@ -117,9 +118,10 @@ $(document).ready(function () {
     // if (quizOver === false&) {
     $("#seconds").text(getFormattedSeconds());
     // }
-
+    scoreFactor = totalSeconds - secondsElapsed
     //If the time has run out, then stop the countdown
     if (secondsElapsed >= totalSeconds) {
+      scoreFactor = totalSeconds - secondsElapsed
 
       stopTimer();
 
@@ -220,7 +222,8 @@ $(document).ready(function () {
     if (selectedOption === correctOption) {
       correctAnswers++;
       secondsElapsed -= 15;
-      console.log("got here correct# ", correctAnswers);
+      // console.log("got here correct# ", correctAnswers);
+      // console.log("seconds left", totalSeconds - secondsElapsed)
     } else {
       secondsElapsed += 15;
       console.log("not correct");
@@ -229,6 +232,10 @@ $(document).ready(function () {
     if (currentQuestion < questions.length) {
       displayCurrentQuestion();
     } else {
+
+
+      // scoreFactor = totalSeconds - secondsElapsed
+      console.log("seconds left:", scoreFactor)
       displayScore();
       nextButton.setAttribute("hidden", "true");
       startAgainButton.removeAttribute("hidden");
@@ -241,7 +248,8 @@ $(document).ready(function () {
   function displayScore() {
     $(document)
       .find("#quizContainer > .result")
-      .text("You scored: " + correctAnswers + " out of: " + questions.length);
+      .text("You scored: " + scoreFactor * correctAnswers);
+    // .text("You scored: " + correctAnswers + " out of: " + questions.length);
 
     secondsFactor = secondsLeft;
 
@@ -334,8 +342,9 @@ $(document).ready(function () {
 
     var initialsText = {
       initials: initialsInput.value.trim(),
-      score: correctAnswers
+      score: correctAnswers * scoreFactor
     };
+
 
     // Return from function early if submitted initials is blank
     if (initialsText === "") {
